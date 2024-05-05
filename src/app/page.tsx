@@ -1,7 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Images from "./_components/Images";
-import Link from "next/link";
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
