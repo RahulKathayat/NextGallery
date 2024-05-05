@@ -6,6 +6,7 @@ import "@uploadthing/react/styles.css";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +26,7 @@ export default function RootLayout(props: {
   return (
     <ClerkProvider>
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${inter.variable} dark`}>
         <NextSSRPlugin
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
@@ -37,6 +38,7 @@ export default function RootLayout(props: {
         </div>
         {props.modal}
         <div id="modal-root"/>
+        <Toaster theme="dark" position="bottom-center"/>
       </body>
     </html>
     </ClerkProvider>
