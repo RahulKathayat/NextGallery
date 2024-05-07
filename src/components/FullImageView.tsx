@@ -1,6 +1,7 @@
 import { clerkClient } from "@clerk/nextjs/server";
 import { deleteImage, getImage } from "~/server/db/queries";
 import { Button } from "./ui/button";
+import { revalidatePath } from "next/cache";
 
 export default async function FullImageView({photoId}: {photoId: number}) {
     const image = await getImage(photoId);
@@ -21,14 +22,13 @@ export default async function FullImageView({photoId}: {photoId: number}) {
                 Created On : <br/>{new Date(image.createdAt).toLocaleDateString()}
             </div>
             <div className="text-lg text-center p-2">
-                <form action={async ()=>{
+                <form action={async()=>{
                     "use server";
                     await deleteImage(photoId);
+                    revalidatePath("/");
                 }}>
-
                     <Button variant="destructive" className="text-xl" type="submit">Delete</Button>
                 </form>
-
             </div>
         </div>
     </div>

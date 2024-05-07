@@ -38,5 +38,5 @@ export const deleteImage = async (id: number) => {
   await db
     .delete(images)
     .where(and(eq(images.id, id), eq(images.userId, user.userId)));
-    redirect("/");
+    redirect('/');
 };
