@@ -1,5 +1,5 @@
 "use client";
-// @ts-ignore
+
 import { useRouter } from "next/navigation";
 import { useUploadThing } from "~/utils/uploadthing";
 import { toast } from "sonner"
